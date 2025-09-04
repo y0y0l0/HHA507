@@ -1,0 +1,20 @@
+#Datasets
+   input/*.*
+   
+# Python
+   __pycache__/
+   *.pyc
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+   .vscode/
+   .idea/

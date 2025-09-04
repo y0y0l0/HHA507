@@ -1,7 +1,2 @@
 pandas
-# to use with large data sets
 polars
-# to retrieve system time
-time
-# to retrieve system date
-date

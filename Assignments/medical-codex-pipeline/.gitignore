@@ -1,6 +1,16 @@
-#Datasets
-   input/*.*
-   
+# Datasets
+input/HCPCS/*.*
+input/ICD_10_CM_US/*.*
+input/ICD_10_CM_WHO/*.*
+input/LOINC/*.*
+input/NPI/*.*
+input/RxNorm/*.*
+SnowMed/*.*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
 # Python
    __pycache__/
    *.pyc
@@ -16,5 +26,5 @@ env.bak/
 venv.bak/
 
 # IDE
-   .vscode/
-   .idea/
+   *.vscode/
+   *.idea/

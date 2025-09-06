@@ -1,0 +1,5 @@
+{
+    "gitlens.debug": true,
+    "gitlens.advanced.commits.delayLoadingFileDetails": true,
+    "gitlens.detectNestedRepositories": true
+}

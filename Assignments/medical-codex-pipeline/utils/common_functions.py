@@ -5,10 +5,18 @@ import os
 # Code - first Column
 # Description - Second Column
 # Load_Date - third column with current date
-def setLastUpdateColumn(input_df, input_pd):
+def normalizeColumnNames(input_df, input_pd):
     ## Rename columns and add last_updated column with current date
     numColumn =len(input_df.columns)
     match numColumn:
+        case 2:
+            ## Rename columns
+            ## Assuming the input dataframe has exactly two columns
+            input_df=input_df.rename (columns={
+            ''+input_df.columns[0]+'':'code',
+            ''+input_df.columns[1]+'':'description',
+            })
+            print("Two columns found")
         case 3:
             ## Rename columns
             ## Assuming the input dataframe has exactly three columns
@@ -20,7 +28,7 @@ def setLastUpdateColumn(input_df, input_pd):
             print("Three columns found")
         case 4:
             ## Rename columns
-            ## Assuming the input dataframe has exactly three columns
+            ## Assuming the input dataframe has exactly four columns
             input_df=input_df.rename (columns={
             ''+input_df.columns[0]+'':'code',
             ''+input_df.columns[1]+'':'description',

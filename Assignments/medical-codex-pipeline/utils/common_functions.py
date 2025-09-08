@@ -36,8 +36,19 @@ def normalizeColumnNames(input_df, input_pd):
             ''+input_df.columns[3]+'':'active',
             })
             print("Four columns found")
+        case 5:
+            ## Rename columns
+            ## Assuming the input dataframe has exactly four columns
+            input_df=input_df.rename (columns={
+            ''+input_df.columns[0]+'':'code',
+            ''+input_df.columns[1]+'':'description',
+            ''+input_df.columns[2]+'':'category',
+            ''+input_df.columns[3]+'':'active',
+            ''+input_df.columns[4]+'':'effective_datetime',
+            })
+            print("Five columns found")
         case _:
-             raise ValueError("Input dataframe must have at least three columns.")
+             raise ValueError("Input dataframe must have at least two columns.")
             
     ## Add last_updated column with current date
     input_df['last_updated'] = input_pd.Timestamp.today().normalize()

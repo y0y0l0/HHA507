@@ -1,6 +1,6 @@
 polars
 pandas
-requests
-scipy
-numpy
-matplotlib
+#requests
+#scipy
+#numpy
+#matplotlib

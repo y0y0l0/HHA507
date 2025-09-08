@@ -1,8 +1,8 @@
 import pandas as pd
 import re
-
+from utils.common_functions import normalizeColumnNames, save_to_formats
 fileInputPath= 'input/ICD_10_CM_US/icd10cm_order_2026.txt'
-fileOutputPath ='output/icd10cm_order_2026.csv'
+fileOutputPath ='output'
 
 
 ## Load raw_data
@@ -16,7 +16,7 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
         line = line.rstrip('\n\r')
         if len(line) < 15:  # Skip lines that are too short
             continue
-
+        print(line)
         # Parse the fixed-length format based on pdf instructions
         order_num = line[0:5].strip()  # Order number, first 6 characters
         code = line[6:13].strip()  # ICD-10-CM code, characters 7-13
@@ -30,6 +30,8 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
         # Extract description and description_detailed
         description = parts[0].strip() if len(parts) > 0 else ""
+        print("Number of codes parsed:", len(codes))
+       
         description_detailed = parts[1].strip() if len(parts) > 1 else ""
 
         # Append the parsed data to the codes list
@@ -43,13 +45,17 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
 ## Create a DataFrame from the parsed codes
 raw_data = pd.DataFrame(codes)
-raw_data
+raw_data.to_csv("output/icd10cm_order_2026.csv", index=False)
+print(raw_data.columns)
 ## Clean data
-cols = ['code', 'description']
+cols = ['code', 'description','level']
 clean_data = raw_data[cols]
-## hardcode current date value on last_updated column
-clean_data[['last_updated']] = pd.Timestamp.today().normalize()
-## Save the DataFrame to a CSV file
-clean_data.to_csv(fileOutputPath)
+print(clean_data.head())
+## rename columns and add last_updated column with current date
+clean_data =normalizeColumnNames(clean_data, pd)
+
+## save clean data to output
+output_path = "output/HCPC2025_OCT_ANWEB.csv"
+save_to_formats(clean_data, fileInputPath,fileOutputPath, "icd10cm_2026_processed.csv")
 
 

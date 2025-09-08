@@ -1,6 +1,9 @@
 import pandas as pd
 import os
+import zipfile  # Import the zipfile library (though it's usually not needed)
 
+# GitHub's file size limit in bytes
+github_limit_bytes = 100 * 1024 * 1024
 # This function will create third column with the current date and return data with the column renamed as follows:
 # Code - first Column
 # Description - Second Column
@@ -55,18 +58,39 @@ def normalizeColumnNames(input_df, input_pd):
     return input_df
 
 def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
-    #check if path exists
-    if os.path.exists(fileOutputPath):
-        input_df.to_csv(fileOutputPath+"/"+filename)
-        print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
-        print(f"Saved to {fileOutputPath}/{filename}")
-        print(f"\nFirst 5 rows:")
-        print(input_df.head())
-    else:
+   
+    # Check if the output directory exists
+    if not os.path.exists(fileOutputPath):
         print(f"The file '{fileOutputPath}' does not exist.")
         os.makedirs(fileOutputPath)
         print(f"Created new directory '{fileOutputPath}' .")
-        
+    # Construct the full output file path
+    print(fileOutputPath+"/"+filename) 
+    output_file_path = fileOutputPath+"/"+filename
+    print(f"Output file path: {output_file_path}")
+    # Save the DataFrame to CSV
+    input_df.to_csv(output_file_path)
+    print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
+    print(f"Saved to {output_file_path}")  
+    
+    # Get the file size *after* saving
+    file_size = os.path.getsize(output_file_path)
+
+    # Check if the file size exceeds the limit
+    if file_size > github_limit_bytes:
+        print("The file is too large to be published to GitHub directly, compressing file.")
+        compressed_file_path = output_file_path + ".zip"
+        try:
+            input_df.to_csv(compressed_file_path, index=False, compression='zip')
+            print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
+            print(f"Saved to {compressed_file_path} (compressed)")
+            # remove the original uncompressed file to save space
+            os.remove(output_file_path)
+        except Exception as e:
+             print(f"Error during compression: {e}")
+
+    print(f"\nFirst 5 rows:")
+    print(input_df.head())     
 def main():
  ## Load loinc data to dataframe
  loinc = pd.read_csv('input/LOINC/Loinc.csv', usecols=[0,1,2])

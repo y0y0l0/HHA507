@@ -1,7 +1,6 @@
 import polars as pl
 import pandas as pd
 from pathlib import Path
-
 from utils.common_functions import normalizeColumnNames, save_to_formats
 fileInputPath= Path('input/SnowMed/sct2_Description_Full-en_US1000124_20250301.txt')
 fileOutputPath ='output'
@@ -28,8 +27,6 @@ raw_data = pl.read_csv(
 cols = ['conceptId', 'term','moduleId','active', 'effectiveTime' ]
 #clean data
 clean_data = raw_data [cols].to_pandas()
-
-clean_data=normalizeColumnNames(clean_data, pd)
-
+clean_data=normalizeColumnNames(clean_data,pd)
 ## save cleaned data to output path
 save_to_formats(clean_data, fileInputPath,fileOutputPath, "snowmed_2025_processed.csv")

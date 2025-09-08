@@ -64,8 +64,7 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
         print(f"The file '{fileOutputPath}' does not exist.")
         os.makedirs(fileOutputPath)
         print(f"Created new directory '{fileOutputPath}' .")
-    # Construct the full output file path
-    print(fileOutputPath+"/"+filename) 
+    # Construct the full output file pathS
     output_file_path = fileOutputPath+"/"+filename
     print(f"Output file path: {output_file_path}")
     # Save the DataFrame to CSV
@@ -79,7 +78,8 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
     # Check if the file size exceeds the limit
     if file_size > github_limit_bytes:
         print("The file is too large to be published to GitHub directly, compressing file.")
-        compressed_file_path = output_file_path + ".zip"
+        compressed_file_path = output_file_path .replace (".csv", ".zip")
+        print (f"Compressed file path: {compressed_file_path}")
         try:
             input_df.to_csv(compressed_file_path, index=False, compression='zip')
             print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")

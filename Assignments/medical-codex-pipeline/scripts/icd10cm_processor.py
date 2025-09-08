@@ -1,9 +1,9 @@
 import pandas as pd
 import re
 from utils.common_functions import normalizeColumnNames, save_to_formats
+
 fileInputPath= 'input/ICD_10_CM_US/icd10cm_order_2026.txt'
 fileOutputPath ='output'
-
 
 ## Load raw_data
 # This initializes a blank list to hold the parsed codes (e.g., individual rows from the text file)
@@ -45,8 +45,9 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
 ## Create a DataFrame from the parsed codes
 raw_data = pd.DataFrame(codes)
-raw_data.to_csv("output/icd10cm_order_2026.csv", index=False)
-print(raw_data.columns)
+print( raw_data.head())
+raw_data.columns = ['order_num', 'code', 'level', 'description', 'description_detailed']
+print( raw_data.head())
 ## Clean data
 cols = ['code', 'description','level']
 clean_data = raw_data[cols]
@@ -55,7 +56,6 @@ print(clean_data.head())
 clean_data =normalizeColumnNames(clean_data, pd)
 
 ## save clean data to output
-output_path = "output/HCPC2025_OCT_ANWEB.csv"
 save_to_formats(clean_data, fileInputPath,fileOutputPath, "icd10cm_2026_processed.csv")
 
 

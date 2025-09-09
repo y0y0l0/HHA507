@@ -19,15 +19,14 @@ Create Python scripts that can process each medical codex listed below into stan
 
 
 ## Target Medical Codexes
-Based on your company's `about.md` reference document:
-
-1. **SNOMED CT (US)** - Clinical terminology
-2. **ICD-10-CM (US)** - Diagnosis codes  
-3. **ICD-10 (WHO)** - International diagnosis codes
-4. **HCPCS (US)** - Healthcare procedure codes
-5. **LOINC (US)** - Laboratory test codes
-6. **RxNorm (US)** - Medication codes
-7. **NPI (US)** - Healthcare provider identifiers
+Based on  `about.md` reference document:
+1. **SNOMED CT (US)** - Clinical terminology - https://www.nlm.nih.gov/healthit/snomedct/archive.html
+2. **ICD-10-CM (US)** - Diagnosis codes - https://www.cms.gov/medicare/coding-billing/icd-10-codes 
+3. **ICD-10 (WHO)** - International diagnosis codes - https://icdcdn.who.int/icd10/index.html 
+4. **HCPCS (US)** - Healthcare procedure codes - https://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html 
+5. **LOINC (US)** - Laboratory test codes - https://loinc.org/downloads/
+6. **RxNorm (US)** - Medication codes - https://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html 
+7. **NPI (US)** - Healthcare provider identifiers - https://download.cms.gov/nppes/NPI_Files.html 
 
 ###  **Important**: Create `.gitignore` to exclude raw data files:
    ```gitignore
@@ -119,7 +118,8 @@ Standardize column names across all codexes:
 
 ### 2. Common Utilities Module
 Create `utils/common_functions.py` with one reusable function:
-- `save_to_formats(df, base_filename)`: Save DataFrame to CSV 
+- `save_to_formats(input_df, fileInputPath,fileOutputPath, filename)`: Save pandas DataFrame to CSV 
+- `normalizeColumnNames(input_df, input_pd)`: Standardize column names to the expected output format
 
 This function will be used across all processing scripts to ensure consistent output formatting.
 

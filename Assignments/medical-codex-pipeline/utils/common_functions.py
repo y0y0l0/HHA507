@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-import zipfile  # Import the zipfile library (though it's usually not needed)
+import zipfile  # Import the zipfile library to handle compression
 
 # GitHub's file size limit in bytes
 github_limit_bytes = 100 * 1024 * 1024
@@ -8,6 +8,7 @@ github_limit_bytes = 100 * 1024 * 1024
 # Code - first Column
 # Description - Second Column
 # Load_Date - third column with current date
+# If there are more than two columns, it will rename them as follows:
 def normalizeColumnNames(input_df, input_pd):
     ## Rename columns and add last_updated column with current date
     numColumn =len(input_df.columns)
@@ -56,7 +57,7 @@ def normalizeColumnNames(input_df, input_pd):
     ## Add last_updated column with current date
     input_df['last_updated'] = input_pd.Timestamp.today().normalize()
     return input_df
-
+## This function saves the dataframe to csv format and compresses it if it exceeds GitHub's file size limit
 def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
    
     # Check if the output directory exists
@@ -71,7 +72,8 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
     input_df.to_csv(output_file_path)
     print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
     print(f"Saved to {output_file_path}")  
-    
+    print(f"\nMemory usage (MB): {input_df.estimated_size() / 1024**2:.2f}")
+
     # Get the file size *after* saving
     file_size = os.path.getsize(output_file_path)
 
@@ -89,7 +91,7 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
         except Exception as e:
              print(f"Error during compression: {e}")
 
-    print(f"\nFirst 5 rows:")
+    print(f"\nView of the first 5 rows:")
     print(input_df.head())     
 def main():
  ## Load loinc data to dataframe

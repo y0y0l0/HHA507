@@ -16,7 +16,7 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
         line = line.rstrip('\n\r')
         if len(line) < 15:  # Skip lines that are too short
             continue
-        print(line)
+
         # Parse the fixed-length format based on pdf instructions
         order_num = line[0:5].strip()  # Order number, first 6 characters
         code = line[6:13].strip()  # ICD-10-CM code, characters 7-13
@@ -30,8 +30,6 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
         # Extract description and description_detailed
         description = parts[0].strip() if len(parts) > 0 else ""
-        print("Number of codes parsed:", len(codes))
-       
         description_detailed = parts[1].strip() if len(parts) > 1 else ""
 
         # Append the parsed data to the codes list
@@ -45,6 +43,7 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
 ## Create a DataFrame from the parsed codes
 raw_data = pd.DataFrame(codes)
+raw_data.to_csv("output/icd10cm_order_2025_test.csv", index=False)
 print( raw_data.head())
 raw_data.columns = ['order_num', 'code', 'level', 'description', 'description_detailed']
 print( raw_data.head())

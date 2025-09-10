@@ -1,3 +1,4 @@
 pandas # For data manipulation
 polars # For efficient data processing
 pyarrow # For Parquet support
+numpy # For dataframe data selection

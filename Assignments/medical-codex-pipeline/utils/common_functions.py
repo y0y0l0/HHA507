@@ -69,7 +69,7 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
     output_file_path = fileOutputPath+"/"+filename
     print(f"Output file path: {output_file_path}")
     # Save the DataFrame to CSV
-    input_df.to_csv(output_file_path)
+    input_df.to_csv(output_file_path, index = False)
     print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
     print(f"Saved to {output_file_path}")  
     print(f"\nMemory usage (MB): {input_df.estimated_size() / 1024**2:.2f}")

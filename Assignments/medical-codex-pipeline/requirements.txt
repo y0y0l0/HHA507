@@ -1,4 +1,3 @@
 pandas # For data manipulation
 polars # For efficient data processing
 pyarrow # For Parquet support
-zipfile  # Import the zipfile library (though it's usually not needed)

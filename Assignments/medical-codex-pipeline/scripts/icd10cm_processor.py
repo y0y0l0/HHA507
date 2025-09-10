@@ -14,6 +14,7 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
         # Remove whitespace and check line length
         line = line.rstrip('\n\r')
+        print(line)
         if len(line) < 15:  # Skip lines that are too short
             continue
 
@@ -27,7 +28,7 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
         
         # Split by 4+ consecutive spaces to separate description from description_detailed
         parts = re.split(r'\s{4,}', remaining_text, 1)
-
+        print (remaining_text)
         # Extract description and description_detailed
         description = parts[0].strip() if len(parts) > 0 else ""
         description_detailed = parts[1].strip() if len(parts) > 1 else ""
@@ -43,8 +44,10 @@ with open(fileInputPath, 'r', encoding='utf-8') as file:
 
 ## Create a DataFrame from the parsed codes
 raw_data = pd.DataFrame(codes)
-raw_data.to_csv("output/icd10cm_order_2025_test.csv", index=False)
+raw_data.to_csv("output/icd10cm_order_2025_test.csv")
 print( raw_data.head())
+
+
 raw_data.columns = ['order_num', 'code', 'level', 'description', 'description_detailed']
 print( raw_data.head())
 ## Clean data

@@ -27,5 +27,5 @@ Assignments/medical-codex-pipeline/input/SnowMed/*.*
 *venv.bak/
 
 # IDE
-.vscode/
-.idea/
+*.vscode/
+*.idea/

@@ -1,6 +1,8 @@
+import gc
 import pandas as pd
 import os
 import zipfile  # Import the zipfile library to handle compression
+import gc as gc
 
 # GitHub's file size limit in bytes
 github_limit_bytes = 100 * 1024 * 1024
@@ -59,7 +61,7 @@ def normalizeColumnNames(input_df, input_pd):
     return input_df
 ## This function saves the dataframe to csv format and compresses it if it exceeds GitHub's file size limit
 def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
-   
+    gc.collect()  # Force garbage collection to free up memory
     # Check if the output directory exists
     if not os.path.exists(fileOutputPath):
         print(f"The file '{fileOutputPath}' does not exist.")
@@ -90,7 +92,7 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
             os.remove(output_file_path)
         except Exception as e:
              print(f"Error during compression: {e}")
-
+    gc.collect()  # Force garbage collection to free up memory
     print(f"\nView of the first 5 rows:")
     print(input_df.head())     
 def main():

@@ -15,8 +15,9 @@ raw_data = pl.read_csv(fileInputPath, n_rows=100_000)
 # We create a 'name' column based on Entity Type Code (1=individual, 2=organization)
 gc.collect()  # Force garbage collection to free up memory
 raw_data = raw_data.with_columns(
-    #
-    # Create the 'Name' column
+    
+    # Create the 'Name' column based on Entity Type Code
+    # if Entity Type Code is '1', concatenate first and last names; if '2', use organization name
     pl.when(pl.col('Entity Type Code') == '1')
     .then(pl.col('Provider First Name') + ' ' + pl.col('Provider Last Name (Legal Name)'))
     .otherwise(pl.col('Provider Organization Name (Legal Business Name)'))

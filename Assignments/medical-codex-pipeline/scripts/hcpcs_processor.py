@@ -1,7 +1,8 @@
 import pandas as pd
-from utils.common_functions import normalizeColumnNames, save_to_formats
+from utils.common_functions import normalizeColumnNames, save_to_formats,adjust_path_based_on_OS
 #Path to the HCPCS text file
-fileInputPath = "input/HCPCS/HCPC2025_OCT_ANWEB_v2.txt"
+fileInputPath = adjust_path_based_on_OS("input/HCPCS/HCPC2025_OCT_ANWEB_v2.txt")
+#fileInputPath = "input/HCPCS/HCPC2025_OCT_ANWEB_v2.txt"
 fileOutputPath = "output"
 
 ## load raw_data
@@ -18,7 +19,7 @@ raw_data = pd.read_fwf(fileInputPath, colspecs=colspecs, names=column_names)
 cols = ['Code', 'Description1']
 clean_data = raw_data[cols]
 ## rename columns and add last_updated column with current date
-clean_data =normalizeColumnNames(clean_data, pd)
+clean_data =normalizeColumnNames(clean_data,pd)
 
 ## save clean data to output
 output_path = "output/HCPC2025_OCT_ANWEB.csv"

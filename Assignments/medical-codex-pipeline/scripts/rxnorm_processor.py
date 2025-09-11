@@ -1,9 +1,9 @@
 import polars as pl
 import pandas as pd
 from pathlib import Path
-from utils.common_functions import normalizeColumnNames, save_to_formats
-
-fileInputPath= 'input/RxNorm/RXNATOMARCHIVE.RRF'
+from utils.common_functions import normalizeColumnNames, save_to_formats,adjust_path_based_on_OS
+#Path to the RxNorm RRF file
+fileInputPath = adjust_path_based_on_OS('input/RxNorm/RXNATOMARCHIVE.RRF')
 fileOutputPath ='output'
 
 columns = [
@@ -22,6 +22,6 @@ raw_data= pl.read_csv(
 cols = ['code', 'str', 'rxaui','sab','last_released']
 #clean data
 clean_data = raw_data [cols].to_pandas()
-clean_data=normalizeColumnNames(clean_data,pd)
+clean_data=normalizeColumnNames(clean_datad)
 ## save cleaned data to output path
 save_to_formats(clean_data, fileInputPath,fileOutputPath, "rxnorm2025_processed.csv")

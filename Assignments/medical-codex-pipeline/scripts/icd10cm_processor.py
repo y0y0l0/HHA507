@@ -1,8 +1,8 @@
 import pandas as pd
 import re
-from utils.common_functions import normalizeColumnNames, save_to_formats
-
-fileInputPath= 'input/ICD_10_CM_US/icd10cm_order_2026.txt'
+from utils.common_functions import normalizeColumnNames, save_to_formats,adjust_path_based_on_OS
+#Path to the ICD_10 CM US text file
+fileInputPath = adjust_path_based_on_OS('input/ICD_10_CM_US/icd10cm_order_2026.txt')
 fileOutputPath ='output'
 
 ## Load raw_data

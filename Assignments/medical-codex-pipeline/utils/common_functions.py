@@ -11,7 +11,7 @@ github_limit_bytes = 100 * 1024 * 1024
 # Description - Second Column
 # Load_Date - third column with current date
 # If there are more than two columns, it will rename them as follows:
-def normalizeColumnNames(input_df, input_pd):
+def normalizeColumnNames(input_df: pd.DataFrame, input_pd: pd.DataFrame) -> pd.DataFrame:
     ## Rename columns and add last_updated column with current date
     numColumn =len(input_df.columns)
     match numColumn:
@@ -60,7 +60,7 @@ def normalizeColumnNames(input_df, input_pd):
     input_df['last_updated'] = input_pd.Timestamp.today().normalize()
     return input_df
 ## This function saves the dataframe to csv format and compresses it if it exceeds GitHub's file size limit
-def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
+def save_to_formats(input_df: pd.DataFrame, fileInputPath: str, fileOutputPath: str, filename: str):
     gc.collect()  # Force garbage collection to free up memory
     # Check if the output directory exists
     if not os.path.exists(fileOutputPath):
@@ -72,6 +72,7 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
     print(f"Output file path: {output_file_path}")
     # Save the DataFrame to CSV
     input_df.to_csv(output_file_path, index = False)
+  
     print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
     print(f"Saved to {output_file_path}")  
     print(f"\nMemory usage (MB): {input_df.estimated_size() / 1024**2:.2f}")
@@ -86,6 +87,8 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
         print (f"Compressed file path: {compressed_file_path}")
         try:
             input_df.to_csv(compressed_file_path, index=False, compression='zip')
+            input_df.flush() # Ensure all data is written to disk
+
             print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
             print(f"Saved to {compressed_file_path} (compressed)")
             # remove the original uncompressed file to save space
@@ -94,19 +97,37 @@ def save_to_formats(input_df, fileInputPath,fileOutputPath, filename):
              print(f"Error during compression: {e}")
     gc.collect()  # Force garbage collection to free up memory
     print(f"\nView of the first 5 rows:")
-    print(input_df.head())     
+    print(input_df.head())  
+# Adjust file path for Linix/Mac operating systems
+def adjust_path_based_on_OS(file_path:str):
+    # Adjust file path for Mac if necessary
+    if os.uname() == 'Darwin':
+        print("This is Linux or Mac OS.")
+        file_path = file_path.replace('/','\\')
+    return file_path
 def main():
- ## Load loinc data to dataframe
- loinc = pd.read_csv('input/LOINC/Loinc.csv', usecols=[0,1,2])
- loinc.head()
+    # Load loinc data into the 'loinc' DataFrame
+    loinc = pd.read_csv('input/LOINC/Loinc.csv', usecols=[0,1,2])
+    
+    # Print head for verification (optional)
+    print(loinc.head())
+    
+    #Path to the LOINC csv file
+    fileInputPath = adjust_path_based_on_OS('input/LOINC/Loinc.csv')
+    fileOutputPath='output'
 
- fileInputPath='input/LOINC/Loinc.csv'
- fileOutputPath='output'
- filename = 'Loinc_test.csv'
- ## save to csv format
- save_to_formats(pd,fileInputPath,fileOutputPath,filename)
+    #load raw_data
+    raw_data = pd.read_csv(fileInputPath,low_memory=False)
+    cols = ['LOINC_NUM', 'COMPONENT', 'CLASSTYPE', 'STATUS']
+
+    #clean data
+    clean_data = raw_data [cols]
+    clean_data=normalizeColumnNames(clean_data, pd)
+
+    ## save cleaned data to output path
+    save_to_formats(clean_data, fileInputPath,fileOutputPath, "loinc2025_processed.csv")
 
 if __name__ == "__main__":
-   main()
+    main()
 
     

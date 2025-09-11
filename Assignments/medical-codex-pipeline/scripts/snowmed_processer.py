@@ -1,8 +1,12 @@
 import polars as pl
 import pandas as pd
+import os as os
 from pathlib import Path
-from utils.common_functions import normalizeColumnNames, save_to_formats
-fileInputPath= Path('input/SnowMed/sct2_Description_Full-en_US1000124_20250301.txt')
+from utils.common_functions import normalizeColumnNames, save_to_formats,adjust_path_based_on_OS
+#Path to the SnowMed text file
+#fileInputPath= Path(adjust_path_based_on_OS('input/SnowMed/sct2_Description_Full-en_US1000124_20250301.txt'))
+fileInputPath= adjust_path_based_on_OS('input/SnowMed/sct2_Description_Full-en_US1000124_20250301.txt')
+print (f"File input path: {fileInputPath}")
 fileOutputPath ='output'
 
 raw_data = pl.read_csv(

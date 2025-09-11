@@ -1,6 +1,7 @@
 import pandas as pd
-from utils.common_functions import normalizeColumnNames, save_to_formats
-fileInputPath ='input/LOINC/Loinc.csv'
+from utils.common_functions import normalizeColumnNames, save_to_formats,adjust_path_based_on_OS
+#Path to the LOINC csv file
+fileInputPath = adjust_path_based_on_OS('input/LOINC/Loinc.csv')
 fileOutputPath='output'
 
 #load raw_data

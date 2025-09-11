@@ -2,4 +2,6 @@ pandas # For data manipulation
 polars # For efficient data processing
 pyarrow # For Parquet support
 numpy # For dataframe data selection
+os # For operating system dependent functionality
+zipfile # For handling zip files
 gc # For garbage collection

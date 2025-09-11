@@ -11,7 +11,7 @@ github_limit_bytes = 100 * 1024 * 1024
 # Description - Second Column
 # Load_Date - third column with current date
 # If there are more than two columns, it will rename them as follows:
-def normalizeColumnNames(input_df: pd.DataFrame, input_pd: pd.DataFrame) -> pd.DataFrame:
+def normalizeColumnNames(input_df: pd.DataFrame, input_pd: pd) -> pd.DataFrame:
     ## Rename columns and add last_updated column with current date
     numColumn =len(input_df.columns)
     match numColumn:
@@ -61,7 +61,6 @@ def normalizeColumnNames(input_df: pd.DataFrame, input_pd: pd.DataFrame) -> pd.D
     return input_df
 ## This function saves the dataframe to csv format and compresses it if it exceeds GitHub's file size limit
 def save_to_formats(input_df: pd.DataFrame, fileInputPath: str, fileOutputPath: str, filename: str):
-    gc.collect()  # Force garbage collection to free up memory
     # Check if the output directory exists
     if not os.path.exists(fileOutputPath):
         print(f"The file '{fileOutputPath}' does not exist.")
@@ -75,20 +74,19 @@ def save_to_formats(input_df: pd.DataFrame, fileInputPath: str, fileOutputPath: 
   
     print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
     print(f"Saved to {output_file_path}")  
-    print(f"\nMemory usage (MB): {input_df.estimated_size() / 1024**2:.2f}")
+    print(f"\nMemory usage (MB): {input_df.memory_usage().sum() / 1024**2:.2f}")
 
     # Get the file size *after* saving
     file_size = os.path.getsize(output_file_path)
 
-    # Check if the file size exceeds the limit
+    # Check if the file size exceeds the limit 100 MB
     if file_size > github_limit_bytes:
         print("The file is too large to be published to GitHub directly, compressing file.")
         compressed_file_path = output_file_path .replace (".csv", ".zip")
         print (f"Compressed file path: {compressed_file_path}")
         try:
             input_df.to_csv(compressed_file_path, index=False, compression='zip')
-            input_df.flush() # Ensure all data is written to disk
-
+            
             print(f"Successfully parsed {len(input_df)} records from {fileInputPath}")
             print(f"Saved to {compressed_file_path} (compressed)")
             # remove the original uncompressed file to save space
@@ -96,13 +94,14 @@ def save_to_formats(input_df: pd.DataFrame, fileInputPath: str, fileOutputPath: 
         except Exception as e:
              print(f"Error during compression: {e}")
     gc.collect()  # Force garbage collection to free up memory
+    input_df.flush()
     print(f"\nView of the first 5 rows:")
     print(input_df.head())  
 # Adjust file path for Linix/Mac operating systems
 def adjust_path_based_on_OS(file_path:str):
     # Adjust file path for Mac if necessary
     if os.uname() == 'Darwin':
-        print("This is Linux or Mac OS.")
+        print("This is Linux or Mac OS."+ os.uname())
         file_path = file_path.replace('/','\\')
     return file_path
 def main():

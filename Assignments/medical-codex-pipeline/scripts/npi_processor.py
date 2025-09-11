@@ -6,12 +6,8 @@ import os as os
 from utils.common_functions import normalizeColumnNames, save_to_formats, adjust_path_based_on_OS
 #Path to the NPI csv file
 fileInputPath = adjust_path_based_on_OS('input/NPI/npidata_pfile_20050523-20250810.csv')
-# Adjust file path for Windows if necessary
-if os.environ.get('OS','') == 'Windoows_NT':
-    fileInputPath = fileInputPath.replace('/','\\')
-
 fileOutputPath = 'output'
-if os.system
+
 #Load the first 100,000 rows due to memory constraints
 raw_data = pl.read_csv(fileInputPath, n_rows=100_000)
 

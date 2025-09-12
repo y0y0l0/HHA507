@@ -64,10 +64,9 @@ Students will need to download these datasets separately from official sources:
 7. **NPI (US)** - Healthcare provider identifiers
 
 ## Repository Setup
-1. Create a **public** GitHub repository named `medical-codex-pipeline`
+1.  **public** GitHub repository named `https://github.com/y0y0l0/HHA507/tree/main/Assignments/medical-codex-pipeline`
 2. **Important**: Repository must be public for submission
 3. Structure:
-   ```
    medical-codex-pipeline/
    ├── input/
    ├── scripts/
@@ -84,13 +83,23 @@ Students will need to download these datasets separately from official sources:
    │   └── common_functions.py
    ├── requirements.txt
    └── README.md
-   ```
-## For Health Informatics Students
 
 ## Core Requirements
+-- Use Python 3.7+
+-- Use pandas for data manipulation
+-- Use polars for efficient data processing
+-- Use pyarrow for Parquet support
+-- Use numpy for dataframe data selection
 
 ### 1. Data Processing Scripts
-For **each** of the 7 medical codexes, create a Python script that:
+For **each** of the 7 medical codexes, create a Python script as follows:
+- hcpcs_processor.py
+- icd10cm_processor.py
+- icd10who_processor.py
+- loinc_processor.py
+- npi_processor.py
+- rxnorm_processor.py
+- snomed_processor.py
 
 #### Data Loading & Validation
 - Read the raw data file(s) in their native format
@@ -104,8 +113,8 @@ For **each** of the 7 medical codexes, create a Python script that:
 - Remove or flag invalid/retired codes
 
 #### Output Generation
-- **CSV Export**: Clean, standardized CSV with consistent column names
-
+- **CSV Export**: Clean, standardized CSV with the following consistent column names:
+--output/csv/{codex_name}_processed.csv
 
 #### Expected Output Format
 Standardize column names across all codexes:
@@ -118,8 +127,9 @@ Standardize column names across all codexes:
 
 ### 2. Common Utilities Module
 Create `utils/common_functions.py` with one reusable function:
-- `save_to_formats(input_df, fileInputPath,fileOutputPath, filename)`: Save pandas DataFrame to CSV 
+- `save_to_formats(input_df, fileInputPath,fileOutputPath, filename)`: Save pandas DataFrame to CSV and Zip formats with appropriate compression
 - `normalizeColumnNames(input_df, input_pd)`: Standardize column names to the expected output format
+- `adjust_path_based_on_os(file_path)`: Adjust file paths based on the operating system (Windows vs. Unix or Mac)
 
 This function will be used across all processing scripts to ensure consistent output formatting.
 
@@ -129,7 +139,8 @@ This function will be used across all processing scripts to ensure consistent ou
 - **Error Handling**: Robust exception handling with informative messages
 - **Logging**: Use Python logging module to track processing steps
 
----
+### 4. Dependency Management
+- Create `requirements.txt` listing all dependencies with specific versions
 
 ## Optional Extensions
 

@@ -1,8 +1,7 @@
-import gc
 import pandas as pd
-import os
-import zipfile  # Import the zipfile library to handle compression
+import platform as platform
 import gc as gc
+import os as os
 
 # GitHub's file size limit in bytes
 github_limit_bytes = 100 * 1024 * 1024
@@ -94,16 +93,17 @@ def save_to_formats(input_df: pd.DataFrame, fileInputPath: str, fileOutputPath: 
         except Exception as e:
              print(f"Error during compression: {e}")
     gc.collect()  # Force garbage collection to free up memory
-    input_df.flush()
     print(f"\nView of the first 5 rows:")
     print(input_df.head())  
 # Adjust file path for Linix/Mac operating systems
-def adjust_path_based_on_OS(file_path:str):
-    # Adjust file path for Mac if necessary
-    if os.uname() == 'Darwin':
-        print("This is Linux or Mac OS."+ os.uname())
-        file_path = file_path.replace('/','\\')
-    return file_path
+def adjust_path_based_on_OS(file_path: str) -> str:
+    """Adjusts file path separators for the current operating system."""
+    # This is the correct, cross-platform way to check the OS
+    if platform.system() == 'Windows':
+        return file_path.replace('/', '\\')
+    else:
+        return file_path.replace('\\', '/')
+    printfn(f"Operating System: {os.uname()}")
 def main():
     # Load loinc data into the 'loinc' DataFrame
     loinc = pd.read_csv('input/LOINC/Loinc.csv', usecols=[0,1,2])

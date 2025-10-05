@@ -1,0 +1,4 @@
+pandas # For dta manipulation
+sqlalchemy # For database interaction
+#sqlite3 # For SQLite database connection (part of Python standard library)
+#os # For file path operations (part of Python standard library)

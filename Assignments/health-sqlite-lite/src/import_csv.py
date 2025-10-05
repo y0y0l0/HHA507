@@ -1,10 +1,29 @@
 import pandas as pd
-import os as os
-from util.common_functions import adjust_path_based_on_OS
+from sqlalchemy import create_engine, text
 
-# --- Import CSV files ---
-#file resides in the sibling directory "data"
-file_input_path = adjust_path_based_on_OS('../data/patient.csv')
-# Read the CSV file into a DataFrame
-df = pd.read_csv(file_input_path)
-df.describe()
+
+DB_PATH = "./clinic_simple.db"
+CSV_PATH = "./data/patients.csv"
+
+
+def main():
+
+    # Read the CSV file.
+    df = pd.read_csv(CSV_PATH, dtype=str)  
+
+    # Create the database engine.
+    engine = create_engine(f"sqlite:///{DB_PATH}")
+
+    df.to_sql("patients", con=engine, if_exists="append", index=False)
+
+    ## Verify the number of rows loaded.
+    sql_count = text("SELECT COUNT(*) FROM patients")
+    with engine.connect() as conn:
+        result = conn.execute(sql_count)
+        total = result.scalar_one() # scalar_one() is new in SQLAlchemy 2.0 that returns a single value.
+        
+    print(f"Loaded {len(df)} rows into patients. Table now has {total} rows.")
+
+if __name__ == "__main__":
+    main()
+

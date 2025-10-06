@@ -3,7 +3,7 @@
 (1) create DB with Python
 (2) load CSV with Pandas/SQLAlchemy
 (3) run simple queries.
-(4) display html query results*
+(4) display html query results using SQLite vscode extension -alexcvzz.vscode-sqlite -https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite
 
 ## Learning goals
 - Create a **stand-alone `.sql` schema** for a single table.  
@@ -20,6 +20,10 @@ health-sqlite-lite/
 ├─ sql/
 │  ├─ schema.sql
 │  └─ analysis.sql
+├─ output/
+│  ├─ sqlite_query_results.html
+│  ├─ sqlite_query_results.json
+|  └─ sqlite_query_results.txt
 ├─ src/
 │  ├─ create_db.py         
 │  └─ import_csv.py        

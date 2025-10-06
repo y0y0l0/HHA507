@@ -1,5 +1,9 @@
 # Assignment 2 (Lite, Split) — Single-Table Patient Roster in SQLite
-*Two-step workflow: (1) create DB with Python, (2) load CSV with Pandas/SQLAlchemy; then run simple queries.*
+*Two-step workflow: 
+(1) create DB with Python
+(2) load CSV with Pandas/SQLAlchemy
+(3) run simple queries.
+(4) display html query results*
 
 ## Learning goals
 - Create a **stand-alone `.sql` schema** for a single table.  
@@ -97,7 +101,9 @@ FROM patients
 WHERE primary_icd10 = '' OR last_cpt = '';
 ```
 
----
+### 6) Query results generated  from sqlite— `output/sqlite_analysis.html`
+The HTML file contains the results of the queries executed in the previous step, formatted as tables for easy viewing.
+![data from sqlite query results](output/sqlite_analysis.html)
 
 ## How to run
 1. Install dependencies:

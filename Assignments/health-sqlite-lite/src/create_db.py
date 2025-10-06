@@ -1,17 +1,20 @@
 import sqlite3
-from util.common_functions import adjust_path_based_on_OS
-
+from pathlib import Path 
 # --- Import CSV files ---
 #file resides in the sibling directory "data"
 DB_PATH = "./clinic_simple.db"
 CSV_PATH = "./data/patients.csv"
-SCHEMA_PATH = "./sql/schema.sql"
-
+SCHEMA_PATH = Path("./sql/schema.sql")
 
 def main():
 
     # Read the schema SQL file.
-    schema_sql = SCHEMA_PATH.read_text(encoding="utf-8")
+    try:
+        schema_sql = SCHEMA_PATH.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"Error: Schema file not found. Checked path: {SCHEMA_PATH}")
+        print("Please ensure the 'sql/schema.sql' file exists relative to the project root.")
+        return # Stop execution if the file isn't found
 
     # Create (or overwrite) the database and apply the schema.
     with sqlite3.connect(DB_PATH) as conn:

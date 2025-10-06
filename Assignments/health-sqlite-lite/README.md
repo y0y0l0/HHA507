@@ -105,6 +105,7 @@ WHERE primary_icd10 = '' OR last_cpt = '';
 The HTML file contains the results of the queries executed in the previous step, formatted as tables for easy viewing.
 ## data from sqlite query results
 <iframe src="./output/sqlite_output.html" width="100%" height="500px" frameborder="0"></iframe>
+
 ### How to run
 1. Install dependencies:
    ```bash

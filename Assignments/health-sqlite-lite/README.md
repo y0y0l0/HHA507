@@ -104,7 +104,7 @@ WHERE primary_icd10 = '' OR last_cpt = '';
 ### 6) Query results generated  from sqlite— `output/sqlite_analysis.html`
 The HTML file contains the results of the queries executed in the previous step, formatted as tables for easy viewing.
 ## data from sqlite query results
-{% ./output/sqlite_analysis.html %} 
+{% output sqlite_analysis.html %} 
 
 ### How to run
 1. Install dependencies:

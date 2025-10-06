@@ -106,10 +106,10 @@ The HTML file contains the results of the queries executed in the previous step,
 ## data from sqlite query results
 {% include sqlite_query_results.html %}
 ```sql results
--- A) Row count
+-- A) Row count - is the total number of records in the table
 n_patients
 500
--- B) Top primary diagnoses by count
+-- B) Top primary diagnoses by count - is the number of unique ICD10 codes found on our report
 primary_icd10,n
 I10,81
 E11.9,73
@@ -127,7 +127,7 @@ Z23,15
 E66.9,14
 Z79.899,11
 G47.33,10
--- C) Office-visit CPTs since Jan 1, 2025 (CPT codes starting with 992)
+-- C) Office-visit CPTs since Jan 1, 2025 (CPT codes starting with 992) - is the patients with Office-Visit (CPT = 992) within the year of 2025 or greater
 patient_id,last_cpt,last_visit_dt
 P0126,99213,2025-09-09
 P0349,99213,2025-09-09
@@ -223,14 +223,14 @@ P0242,99212,2025-01-13
 P0050,99212,2025-01-10
 P0081,99213,2025-01-05
 P0142,99212,2025-01-02
--- D) Age (approx) at last visit for the 5 oldest patients
+-- D) Age (approx) at last visit for the 5 oldest patients - is 5 eldest patients in our list
 patient_id,birth_date,last_visit_dt,age_years
 P0027,1940-04-11,2024-09-27,85
 P0108,1940-07-08,2025-01-09,85
 P0129,1940-04-15,2025-07-01,85
 P0372,1940-09-11,2024-04-18,85
 P0408,1940-07-14,2025-01-20,85
--- E) Quick data quality check: any blank codes?
+-- E) Quick data quality check: any blank codes? - this query is seeling patients with blank icd10 or CPT code on the report.
 no results found with these comments
 ```
 

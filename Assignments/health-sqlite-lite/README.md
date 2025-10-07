@@ -1,4 +1,6 @@
 # Assignment 2 (Lite, Split) — Single-Table Patient Roster in SQLite
+The goal of this assignment is to practice creating a simple SQLite database from a schema, loading data from a CSV, and running basic SQL queries.
+
 *Two-step workflow: 
 (1) create DB with Python
 (2) load CSV with Pandas/SQLAlchemy
@@ -70,7 +72,7 @@ This script uses Python’s **sqlite3** to create `clinic_simple.db` and apply `
 This script appends `patients.csv` rows into the `patients` table.
 
 
-### 5) Simple queries — `sql/analysis.sql`
+### 5) Queries — `sql/analysis.sql`
 All queries are single-table.
 
 ```sql
@@ -105,7 +107,7 @@ FROM patients
 WHERE primary_icd10 = '' OR last_cpt = '';
 ```
 
-### 6) Query results generated  from sqlite— `output/sqlite_query_results.html,sqlite_query_results.txt,sqlite_query_results.json`
+### 6) Query results generated  from sqlite vscode extension— `output/sqlite_query_results.html,sqlite_query_results.txt,sqlite_query_results.json`
 The HTML file contains the results of the queries executed in the previous step, formatted as tables for easy viewing.
 ## data from sqlite query results
 
@@ -254,7 +256,7 @@ no results found with these comments
    ```bash
    python src/import_csv.py
    ```
-4. Open `clinic_simple.db` in **DB Browser for SQLite** and run `sql/analysis.sql`.
+4. Open `clinic_simple.db` in **DB Browser forSQLite or VSCode SQLite** and run `sql/analysis.sql`.
 
 **`requirements.txt`**
 ```
@@ -272,7 +274,7 @@ SQLAlchemy
 6. `README.md` with:
    - Brief overview of the project (2-3 sentences)
    - Run steps (how to recreate the database)
-   - **Query results section**: For each query (A-E) in `analysis.sql`, include:
+**Query results section**: For each query (A-E) in `analysis.sql`, include:
      - The query description
      - A screenshot or text output of the results from DB Browser
      - 1-2 sentence explanation of what the results show

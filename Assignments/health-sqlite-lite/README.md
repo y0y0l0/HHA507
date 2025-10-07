@@ -1,5 +1,5 @@
 # Assignment 2 (Lite, Split) — Single-Table Patient Roster in SQLite
-The goal of this assignment is to practice creating a simple SQLite database from a schema, loading data from a CSV, and running basic SQL queries.
+The goal of this assignment is to practice creating a simple SQLite database from a schema using python SQLAlchemy, loading data from a CSV, and running basic SQL queries using SQLite.
 
 *Two-step workflow: 
 (1) create DB with Python

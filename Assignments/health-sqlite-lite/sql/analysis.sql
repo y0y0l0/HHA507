@@ -27,3 +27,14 @@ LIMIT 5;
 SELECT *
 FROM patients
 WHERE primary_icd10 = '' OR last_cpt = '';
+
+-- F) top 3 common primary diagnosis for adults (age <=29) are
+--hypertesion (I10), Type 2 diabetes (E11.9), Hypothyroidism (E03.9)
+SELECT primary_icd10, COUNT(*) AS n,
+CAST((julianday(date('now')) - julianday(birth_date)) / 365.25 AS INT) AS age_years
+FROM patients
+WHERE age_years <=29
+GROUP BY primary_icd10
+ORDER BY n DESC
+LIMIT 3;
+

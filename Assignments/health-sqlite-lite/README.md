@@ -76,10 +76,10 @@ This script appends `patients.csv` rows into the `patients` table.
 All queries are single-table.
 
 ```sql
--- A) Row count
+-- A) Row count of all patients
 SELECT COUNT(*) AS n_patients FROM patients;
 
--- B) Top primary diagnoses by count
+-- B) Top primary diagnoses by count is
 SELECT primary_icd10, COUNT(*) AS n
 FROM patients
 GROUP BY primary_icd10
@@ -105,6 +105,15 @@ LIMIT 5;
 SELECT *
 FROM patients
 WHERE primary_icd10 = '' OR last_cpt = '';
+
+-- F) top 3 common primary diagnosis for adults (age <=29) are hypertesion (I10), Type 2 diabetes (E11.9), Hypothyroidism (E03.9)
+SELECT primary_icd10, COUNT(*) AS n,
+CAST((julianday(date('now')) - julianday(birth_date)) / 365.25 AS INT) AS age_years
+FROM patients
+WHERE age_years <=29
+GROUP BY primary_icd10
+ORDER BY n DESC
+LIMIT 3;
 ```
 
 ### 6) Query results generated  from sqlite vscode extension— `output/sqlite_query_results.html,sqlite_query_results.txt,sqlite_query_results.json`
@@ -241,22 +250,33 @@ P0372,1940-09-11,2024-04-18,85
 P0408,1940-07-14,2025-01-20,85
 -- E) Quick data quality check: any blank codes? - this query is seeling patients with blank icd10 or CPT code on the report.
 no results found with these comments
+-- F) top 3 common primary diagnosis for adults (age <=29) are hypertesion (I10), Type 2 diabetes (E11.9), Hypothyroidism (E03.9) - is the top 3 common primary diagnosis for patients age 29 or younger
+primary_icd10,n,age_years
+I10,20,25
+E11.9,11,25
+E03.9,9,20
 ```
 
+
 ### How to run
-1. Install dependencies:
+1. Clone the repo:
+   ```bash
+   git clone <repo_url>
+   cd health-sqlite-lite
+   ```
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-2. **Step 1:** Create the database
+3. **Step 1:** Create the database
    ```bash
    python src/create_db.py
    ```
-3. **Step 2:** Load the CSV
+4. **Step 2:** Load the CSV
    ```bash
    python src/import_csv.py
    ```
-4. Open `clinic_simple.db` in **DB Browser forSQLite or VSCode SQLite** and run `sql/analysis.sql`.
+5. Open `clinic_simple.db` in **DB Browser forSQLite or VSCode SQLite** and run `sql/analysis.sql`.
 
 **`requirements.txt`**
 ```
@@ -264,7 +284,6 @@ pandas
 SQLAlchemy
 ```
 ---
-
 ## Deliverables (GitHub URL) submitted to brightspace called `sqlite_pandas_dbs`
 1. `sql/schema.sql`
 2. `data/patients.csv` (≥25 rows)

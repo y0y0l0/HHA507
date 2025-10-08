@@ -119,10 +119,10 @@ LIMIT 3;
 ### 6) Query results generated  from sqlite vscode extension— `output/sqlite_query_results.html,sqlite_query_results.txt,sqlite_query_results.json`
 The HTML file contains the results of the queries executed in the previous step, formatted as tables for easy viewing.
 ## data from sqlite query results
-![sqlite_query_results](output\sqlite_query_results.png)
-![sqlite_query_results_html](output\sqlite_query_results.html)
-![sqlite_query_results_json](output\sqlite_query_results.json)
-![sqlite_query_results_txt](output\sqlite_query_results.txt)
+![sqlite_query_results](images\sqlite_query_results.png)
+![sqlite_query_results_html](https://github.com/y0y0l0/HHA507/tree/main/Assignments/health-sqlite-lite/output/sqlite_query_results.html)
+![sqlite_query_results_json](https://github.com/y0y0l0/HHA507/tree/main/Assignments/health-sqlite-lite/output/Asqlite_query_results.json)
+![sqlite_query_results_txt](https://github.com/y0y0l0/HHA507/tree/main/Assignments/health-sqlite-lite/output/sqlite_query_results.txt)
 ### Query results with explanations
 ```sql results
 -- A) Row count - is the total number of patient records in the table

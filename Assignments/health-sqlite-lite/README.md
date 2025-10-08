@@ -252,7 +252,7 @@ P0408,1940-07-14,2025-01-20,85
 -- E) Quick data quality check: any blank codes? - this query is seeling patients with blank icd10 or CPT code on the report.
 no results found with these comments
 -- F) top 3 primary diagnosis for patients (age <=29) are hypertesion (I10), Type 2 diabetes (E11.9), Hypothyroidism (E03.9) 
--- is the top 3 most common primary diagnosis for patients age 29 or younger
+-- results the top 3 most common primary diagnosis for patients age 29 or younger
 primary_icd10,n,age_years
 I10,20,25
 E11.9,11,25

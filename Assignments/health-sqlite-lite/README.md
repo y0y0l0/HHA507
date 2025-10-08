@@ -293,9 +293,9 @@ SQLAlchemy
 6. `README.md` with:
    - Brief overview of the project (2-3 sentences)
    - Run steps (how to recreate the database)
-**Query results section**: For each query (A-E) in `analysis.sql`, include:
+**Query results section**: For each query (A-F) in `analysis.sql`, include:
      - The query description
-     - A screenshot or text output of the results from DB Browser
+     - A screenshot or text output of the results from SQLite Extension (vscode)
      - 1-2 sentence explanation of what the results show
 
 ---

@@ -63,17 +63,17 @@ bpxo_data_clean <- subset (xpt_bpxo_data, !is.na(BPXOSY3) & !is.na(BPXODI3))
      - Variables: `DMDMARTZ` (marital status) and `DMDEDUC2` (education level). Recode as specified.
 
 ## DEMO_L.xpt [DMDMARTZ , DMDEDUC2]
-### Marital Status
-|Code or Value | Value Description           | Count    | Cumulative |
-| ------------ | --------------------------- | -------- | -----------|
-| 1	          | Married/Living with partner | 4136	 | 4136	    |
-| 2	          | Widowed/Divorced/Separated	| 2022	 | 6158	    |
-| 3	          | Never married	          | 1625	 | 7783	    |
-| 77           | Refused	                    | 4	      | 7787	    |
-| 99           | Don't know	               | 5	      | 7792	    |
-| .	          |Missing	                    | 4141	 | 11933	    |
+### DMDMARTZ -Marital Status
+|Code or Value | Value Description           | Count | Cumulative |
+| ------------ | --------------------------- | ----- | -----------|
+| 1	           | Married/Living with partner | 4136	 | 4136	      |
+| 2	           | Widowed/Divorced/Separated	 | 2022	 | 6158	      |
+| 3	           | Never married	             | 1625	 | 7783	      |
+| 77           | Refused	                   | 4	   | 7787	      |
+| 99           | Don't know	                 | 5	   | 7792	      |
+| .	           |Missing	                     | 4141	 | 11933	    |
 
-### Education Level
+### DMDEDUC2 -Education Level
 |Code or Value | Value Description                                 | Count | Cumulative |
 | ------------ | ------------------------------------------------- | ----- | -----------|
 | 1	          | Less than 9th grade                               |	373	| 373        |
@@ -128,13 +128,23 @@ plot(DMDEDUC2_grouped ~ DMDMARTZ_grouped , data =demo_data_clean,xlab = "Marital
      - Variables: `DMDMARTZ` (marital status, recoded) and `PAD680` (sedentary behavior time, cleaned).
 
 ## DEMO_L.xpt [DMDMARTZ] & PAQ_L.xpt [PAD680]
-### Minutes sedentary activity
+### PAD680 - Minutes sedentary activity
 |Code or Value | Value Description           | Count | Cumulative |
 | ------------ | --------------------------- | ----- | -----------|
-|0 to 1380	|Range of Values              |8065   |8065        |
-|7777	     |Refused	                    |6	   |8071	      |
-|9999	     |Don't know	               |67	   |8138	      |
-|.	          |Missing	                    |15	   |8153	      |
+|0 to 1380	   |Range of Values              |8065   |8065        |
+|7777	         |Refused	                     |6	     |8071	      |
+|9999	         |Don't know	                 |67	   |8138	      |
+|.	           |Missing	                     |15	   |8153	      |
+
+### DMDMARTZ -Marital Status
+|Code or Value | Value Description           | Count | Cumulative |
+| ------------ | --------------------------- | ----- | -----------|
+| 1	           | Married/Living with partner | 4136	 | 4136	      |
+| 2	           | Widowed/Divorced/Separated	 | 2022	 | 6158	      |
+| 3	           | Never married	             | 1625	 | 7783	      |
+| 77           | Refused	                   | 4	   | 7787	      |
+| 99           | Don't know	                 | 5	   | 7792	      |
+| .	           |Missing	                     | 4141	 | 11933	    |
 """
 
 # Merge the paq_data_cleaned dataframes on the 'SEQN' column with demo_clean_data
@@ -219,8 +229,25 @@ bpxo_merged_data <- t.test(bpxo_married$RIDAGEYR , bpxo_notMarried$RIDAGEYR , va
 bpxo_merged_data
 # The T-Test results indicate married group has higher systolic pressure based on the age of married being higher than not married group (55.13622 vs 52.38241).
 
-""" - **Question 4**: "Is there a correlation between self-reported weight and minutes of sedentary behavior?"  
+"""- **Question 4**: "Is there a correlation between self-reported weight and minutes of sedentary behavior?"  
      - Variables: `WHD020` (self-reported weight, cleaned) and `PAD680` (sedentary behavior time, cleaned).
+
+## WHQ_L.xpt [WHD050] & PAQ_L.xpt [PAD680]
+### WHD050 - Self-reported weight - 1 yr ago (pounds)
+|Code or Value | Value Description           | Count | Cumulative |
+| ------------ | --------------------------- | ----- | -----------|
+|67 to 530	   |Range of Values              |8272	 |8272        |
+|7777	         |Refused	                     |33	   |8305        |
+|9999	         |Don't know	                 |181	   |8486        |
+|.	           |Missing	                     |15	   |8501	      |
+
+### PAD680 - Minutes sedentary activity
+|Code or Value | Value Description           | Count | Cumulative |
+| ------------ | --------------------------- | ----- | -----------|
+|0 to 1380	   |Range of Values              |8065   |8065        |
+|7777	         |Refused	                     |6	     |8071	      |
+|9999	         |Don't know	                 |67	   |8138	      |
+|.	           |Missing	                     |15	   |8153	      |
 """
 
 # Merge the whq_data_clean dataframes on the 'SEQN' column with paq_data_clean in SEQN
@@ -241,4 +268,43 @@ whq_merged_data$WHD020 <- as.factor(whq_merged_data$WHD020)
 # Adjust y-axis limits to magnify the difference
 plot(PAD680  ~ WHD020 , data =whq_merged_data,xlab = "Physical Activity",ylab = "Reported Weight")
 
-"""  - **Question 5 (Creative Analysis)**: Develop your own unique question using at least one of the variables listed above. Ensure that your question can be answered using one of the following tests: chi-square, t-test, ANOVA, or correlation. Clearly state your question, explain why you chose the test, and document your findings."""
+"""- **Question 5 (Creative Analysis)**: Develop your own unique question using at least one of the variables listed above. Ensure that your question can be answered using one of the following tests: chi-square, t-test, ANOVA, or correlation. Clearly state your question, explain why you chose the test, and document your findings.
+
+  - **How does vitamin D levels, dystolic pressure and martial status relate to Kidney failure?**
+    - Variables: `DMDMARTZ` martial status, `BPXODIE` diastolic - 3rd oscillometric reading, `LBDVD2LC` vitamin D, and `KIQ022` kindey failure .
+
+## DEMO_L.xpt[DMDMARTZ] & BPXODI3_L.xpt[BPXODI3] & VID_L.xpt [LBDVD2LC]->KIQ_U_L.xpt[KIQ022]
+
+### DMDMARTZ -Marital Status
+|Code or Value | Value Description           | Count | Cumulative |
+| ------------ | --------------------------- | ----- | -----------|
+| 1	           | Married/Living with partner | 4136	 | 4136	      |
+| 2	           | Widowed/Divorced/Separated	 | 2022	 | 6158	      |
+| 3	           | Never married	             | 1625	 | 7783	      |
+| 77           | Refused	                   | 4	   | 7787	      |
+| 99           | Don't know	                 | 5	   | 7792	      |
+| .	           |Missing	                     | 4141	 | 11933	    |
+
+###BPXODI3 - Diastolic - 3rd oscillometric reading
+
+|Code or Value | Value Description           | Count | Cumulative |
+| ------------ | --------------------------- | ----- | -----------|
+|24 to 136	   |Range of Values	             |7480	 |7480        |
+|.	           |Missing	                     |321	   |7801        |
+
+### LBDVIDLC - 25OHD2+25OHD3 comment code (Vitamin D levels)
+|Code or Value | Value Description              | Count | Cumulative |
+| ------------ | ------------------------------ | ----- | -----------|
+| 0	           |At or above the detection limit	|7307	  |7307        |
+| 1	           |Below lower detection limit	    |0	    |7307        |
+| .	           |Missing	                        |1420	  |8727	       |
+
+### KIQ022 - Ever told you had weak/failing kidneys? (Kidney Failure)
+|Code or Value | Value Description | Count | Cumulative | Skip to Item|
+| ------------ | ----------------- | ----- | -----------|-------------|
+| 1	           | Yes               | 321	 | 321	      |             |
+| 2	           | No	               | 7473	 | 7794	      |KIQ005       |
+| 7	           | Refused	         | 0	   | 7794	      |KIQ005       |
+| 9            | Don't know	       | 13	   | 7807	      |KIQ005       |
+| .	           |Missing	           | 2	   | 7809	      |             |
+"""

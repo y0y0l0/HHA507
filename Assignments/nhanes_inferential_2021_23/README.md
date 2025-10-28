@@ -39,8 +39,13 @@ In this assignment, you will use NHANES data to perform basic inferential statis
 
    - **Question 4**: "Is there a correlation between self-reported weight and minutes of sedentary behavior?"  
      - Variables: `WHD020` (self-reported weight, cleaned) and `PAD680` (sedentary behavior time, cleaned).
-
-   - **Question 5 (Creative Analysis)**: Develop your own unique question using at least one of the variables listed above. Ensure that your question can be answered using one of the following tests: chi-square, t-test, ANOVA, or correlation. Clearly state your question, explain why you chose the test, and document your findings.
+.
+  - **Question 5 (Creative Analysis)**: Develop your own unique question using at least one of the variables listed above. Ensure that your question can be answered using one of the following tests: chi-square, t-test, ANOVA, or correlation. Clearly state your question, explain why you chose the test, and document your findings.
+      - **Does vitamin D levels and high diastolic pressure affect Kidney failure?**
+        - Variables: `DMDMARTZ` martial status, `BPXODIE` diastolic - 3rd oscillometric reading, `LBDVD2LC` vitamin D, and `KIQ022` kindey failure.
+        - The selection of this question is related to the following articles that discuss the relationship between vitamin D levels, blood pressure, and kidney health:
+         - https://pmc.ncbi.nlm.nih.gov/articles/PMC4101586/
+         - https://pubmed.ncbi.nlm.nih.gov/39906471/
 
 4. **Deliverables**
 

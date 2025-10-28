@@ -50,8 +50,9 @@ In this assignment, you will use NHANES data to perform basic inferential statis
 4. **Deliverables**
 
    - A completed Google Colab notebook (`.ipynb` file) with:
-     - Data loading and preparation steps
-     - Analysis and any transformations
-     - Visualizations of descriptives/results (if relevant)
-     - Brief summaries of your findings for each question
+     - Link to Google Colab notebook: (https://colab.research.google.com/drive/1hlUxsNHHuJDp82hvQ2PKxQnxG2rtsEU6#scrollTo=E3bxX_tHQHUJ)
+     - Data loading and preparation steps documented above
+     - Analysis and any transformations performed and documented in the notebook and .py file
+     - Visualizations of descriptives/results (if relevant) described in the notebook
+     - Brief summaries of your findings for each question documented in the notebook
    - Submit the link to your GitHub repository titled `nhanes_inferential_2023`.

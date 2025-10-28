@@ -5,14 +5,14 @@ In this assignment, you will use NHANES data to perform basic inferential statis
 
 # Data Preparation
 ## - NHANES Data: [NHANES 2021-2023](https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?Cycle=2021-2023)
-- **Marital Status** (`DMDMARTZ`) - categorical, needs recoding (married or not married). - ***DEMO_L.xpt***
-- **Education Level** (`DMDEDUC2`) - categorical, needs recoding (bachelor’s or higher vs. less than bachelor’s). - ***DEMO_L.xpt***
+- **Marital Status** (`DMDMARTZ`) - created categorical DMDMARTZ_group, recoding (married or not married). - ***DEMO_L.xpt***
+- **Education Level** (`DMDEDUC2`) - created categorical DMDEDUC2_group,recoding (bachelor’s or higher vs. less than bachelor’s). - ***DEMO_L.xpt***
 - **Age in Years** (`RIDAGEYR`) - continuous.- ***DEMO_L.xpt***
 - **Systolic Blood Pressure** (`BPXOSY3`) - continuous. - ***BPXO_L_Doc.xpt***
 - **Diastolic Blood Pressure** (`BPXODI3`) - continuous. - ***BPXO_L_Doc.xpt***
-- **Vitamin D Lab Interpretation** (`LBDVD2LC`) - categorical, two levels.- ***VID_L.xpt***
+- **Vitamin D Lab Interpretation** (`LBDVD2LC`) - categorical, two levels (remove values with null).- ***VID_L.xpt***
 - **Hepatitis B Lab Antibodies** (`LBXHBS`) - categorical, needs recoding to two levels.- ***HEPB_S_L.xpt***
-- **Weak/Failing Kidneys** (`KIQ022`) - categorical, can be treated as two levels. - ***KIQ_U_L.xpt***
+- **Weak/Failing Kidneys** (`KIQ022`) - categorical, can be treated as two levels (remove values `7`, `9`, and null). - ***KIQ_U_L.xpt***
 - **Minutes of Sedentary Behavior** (`PAD680`) - continuous, needs cleaning (remove values `7777`, `9999`, and null).- ***PAQ_L.xpt***
 - **Current Self-Reported Weight** (`WHD020`) - continuous, needs cleaning (remove values `7777`, `9999`, and null).- ***WHQ_L.xpt***
 ## Instructions

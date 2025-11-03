@@ -20,6 +20,7 @@ In this assignment, you will use NHANES data to perform basic inferential statis
 1. **Create Your GitHub Repository**
    - Create a new GitHub repository titled `nhanes_inferential_2021_23`.
    - Include a `README.md` file that briefly describes the project and the analyses you are performing for each of the questions.
+   - Include a `requirements.txt` file that lists all the Python packages you are using for the analysis.
 
 2. **Complete the Analysis in Google Colab**
    - Use Google Colab to conduct your analysis. Your notebook should be well-documented with explanations of each step just as like we have done in the class notebooks.
@@ -50,7 +51,9 @@ In this assignment, you will use NHANES data to perform basic inferential statis
 4. **Deliverables**
 
    - A completed Google Colab notebook (`.ipynb` file) with:
-     - Link to Google Colab notebook: (https://colab.research.google.com/drive/1hlUxsNHHuJDp82hvQ2PKxQnxG2rtsEU6#scrollTo=E3bxX_tHQHUJ)
+     - Link to Google Colab notebook:
+        - [NHANES 2021-2023 Analysis Python Notebook](https://colab.research.google.com/drive/1qrM4do95rdLeDrTDkWrTbzcGkrAx90Ta#scrollTo=BJkablvnwLaW)
+        - [NHANES 2021-2023 Analysis R Notebook](https://colab.research.google.com/drive/1hlUxsNHHuJDp82hvQ2PKxQnxG2rtsEU6#scrollTo=bTjeqhZscwgW)
      - Data loading and preparation steps documented above
      - Analysis and any transformations performed and documented in the notebook and .py file
      - Visualizations of descriptives/results (if relevant) described in the notebook

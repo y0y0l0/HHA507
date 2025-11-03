@@ -59,3 +59,12 @@ In this assignment, you will use NHANES data to perform basic inferential statis
      - Visualizations of descriptives/results (if relevant) described in the notebook
      - Brief summaries of your findings for each question documented in the notebook
    - Submit the link to your GitHub repository titled `nhanes_inferential_2023`.
+ 
+## Python vs R:
+_______________________________________________________________________________________________________________________________________________________________________
+| Topic                   | R                                                    | Python                                                                             |
+|-------------------------|------------------------------------------------------|------------------------------------------------------------------------------------|
+| **Ease of Use**         | User-friendly interface, good documentation          | Need to install different packages, slightly more complex to use                   |
+| **Visualization**       | No additional libraries required                     | Need to use different packages, and configure the data table accordingly           |
+| **Overall**             | Great for quick proof of concept and prototyping     | Not as intuitive for quick tasks, but equally as powerful for statistical analysis |
+| **Personal Preference** | Preferred for ease of use and quick deployment       | Preferred for development applications and integration with other tools            |

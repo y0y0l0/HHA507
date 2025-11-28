@@ -124,6 +124,7 @@ Collect the following:
         - Your Tableau Public viz.  
       - The **public URL** to your Tableau Public viz.
       link to Tableau Public Viz: <https://public.tableau.com/authoring/SampleStudentStressFactorsVizz/StudentStressFactorsDashboard#1>
+       - GitHub Repository URL: <https://github.com/y0y0l0/HHA507/tree/main/Assignments/tableau_trailhead_basics>
 
    2. **Short Written Reflection (4–6 sentences total)**  
       Address all of the following in a single concise paragraph:

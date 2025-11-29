@@ -89,9 +89,9 @@ Collect the following:
          - *The Tableau Data Model*
    - Save these in image files (e.g., `.png`, `.jpg`).
    *** Screenshots and Links: ***
-     - link to Data Story Telling Badge: ![Data Story Telling With Tableau Public Bandge](/images/DataStorytellingWithTableauPublicBadge.png)
-     - link to Tableau Data Model Badge: ![The Tableau Data Model Badge](/images/TheTableauDataModelBadge.png)
-     - link to Trail Head Badge Summary: ![Trail Head Badge Summary](/images/TrailHeadBadgeSummary.png)
+     - link to Data Story Telling Badge: ![Data Story Telling With Tableau Public Bandge](./images/DataStorytellingWithTableauPublicBadge.png)
+     - link to Tableau Data Model Badge: ![The Tableau Data Model Badge](./images/TheTableauDataModelBadge.png)
+     - link to Trail Head Badge Summary: ![Trail Head Badge Summary](./images/TrailHeadBadgeSummary.png)
      - link to trailhead profile: <https://www.salesforce.com/trailblazer/tpyrcg1vfqnm18tf7n>
 
 2. **Tableau Public Viz Evidence**
@@ -131,7 +131,7 @@ Collect the following:
        **Dataset:**
        link:https://www.kaggle.com/datasets/wardabilal/student-stress-analysis?select=Student+Stress+Factors.csv
        path = kagglehub.dataset_download("wardabilal/student-stress-analysis")
-       Copy of the dataset used in the visualization is attached in the repository ![Trail Head Badge Summary](/data/Student_Stress_Factors.csv)
+       Copy of the dataset used in the visualization is attached in the repository ![Trail Head Badge Summary](./data/Student_Stress_Factors.csv)
        
       - **Data Storytelling:**  
         One principle or best practice from *Data Storytelling with Tableau Public* that you found most important, and how it shaped the viz you created. :contentReference[oaicite:4]{index=4}  

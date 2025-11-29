@@ -123,7 +123,7 @@ Collect the following:
         - The two completed Trailhead modules.
         - Your Tableau Public viz.  
       - The **public URL** to your Tableau Public viz.
-      link to Tableau Public Viz: <https://public.tableau.com/authoring/SampleStudentStressFactorsVizz/StudentStressFactorsDashboard#1>
+      link to Tableau Public Viz: <https://public.tableau.com/app/profile/yo.lo/viz/SampleStudentStressFactorsViz/StudentStressFactorsDashboard>
        - GitHub Repository URL: <https://github.com/y0y0l0/HHA507/tree/main/Assignments/tableau_trailhead_basics>
 
    2. **Short Written Reflection (4–6 sentences total)**  

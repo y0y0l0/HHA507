@@ -99,7 +99,8 @@ Contains diagnosis codes (ICD-10):
       - Bar chart of top 5 billing providers by number of claims are Dr. YuehJien Gu, Reema Ochanley NP, Dr. Iesha Arfeen, Dr. Zahra Naseer MBBS, and Dr. Mashal Salehi.
       - Pie chart showing distribution of primary payers are Medicare, Healthfirst, Fidelis, HIP Medicaid and Healthfirst Capitated.
       - Pie chart of top 10 diagnosis codes by frequency are the following :
-      ``` |CodeValue  |code_count  |                                     CodeName                                                   |
+         |CodeValue  |code_count  |                                     CodeName                                                   |
+          ___________________________________________________________________________________________________________________________    
           |J96.01     |    62      |                                                 Acute respiratory failure with hypoxia (J96.01)|
           |E78.5      |    49      |                                                             Hyperlipidemia, unspecified (E78.5)|
           |I10        |    49      |                                                          Essential (primary) hypertension (I10)|
@@ -110,7 +111,7 @@ Contains diagnosis codes (ICD-10):
           |I48.91     |    24      |                                                        Unspecified atrial fibrillation (I48.91)|
           |I60.8      |    24      |                                              Other nontraumatic intracranial hemorrhage (I60.8)|
           |I50.9      |    22      |                                                              Heart failure, unspecified (I50.9)|
-         ```
+         
    ### How to Run the Notebook
 To run the `claims_analysis.ipynb` notebook, follow these steps:
       - Git installed on your machine

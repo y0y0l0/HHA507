@@ -63,6 +63,15 @@ Contains diagnosis codes (ICD-10):
    │   ├── STONYBRK_20240531_HEADER.csv
    │   ├── STONYBRK_20240531_LINE.csv
    │   ├── STONYBRK_20240531_CODE.csv
+   ├── images/
+   │   ├── billing_providers_chart.png
+   │   ├── primary_payer_chart.png   
+   │   ├── primary_payer_pie_chart.png 
+   │   ├── code_pie_chart.png
+   │   ├── hcpcs_chart.png
+   │   ├── hcpcs_pie_chart.png
+   │   ├── place_of_service_chart.png
+   │   └── inpatient_vs_office_visit_pie_chart.png
    ├── notebooks/
    │   └── claims_analysis.ipynb
    ├── .gitignore
